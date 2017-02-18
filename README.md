@@ -1,6 +1,6 @@
 Foia.fyi
 =====
-Foia.fyi is an open-source tool by Politiwatch which allows for individuals to easily create FOIA requests to send to various government agencies such as the CIA, NSA, FBI, and IRS. Foia.fyi helps Americans bypass the "legalese" required to submit a FOIA request.
+[Foia.fyi](https://foia.fyi) is an open-source tool by Politiwatch which allows for individuals to easily create FOIA requests to send to various government agencies such as the CIA, NSA, FBI, and IRS. Foia.fyi helps Americans bypass the "legalese" required to submit a FOIA request.
 
 ![landing page](http://i.imgur.com/AjEFJPI.png)
 ![sample letter](http://i.imgur.com/s1IWaKC.png)
