@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon"
+  type="image/png"
+  href="/static/assets/icon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lora|Roboto|Arvo" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
+  <script src="printElement.print.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="website" />
+  <meta property="og:description"
+  content="Easily get your FBI, CIA, IRS, or NSA file by submitting Freedom of Information Act requests to the government." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Foia.fyi" />
+  <title>Foia.fyi - easily send FOIA requests to the government</title>
+  <script src="js/index.js"></script>
+</head>
+<body class="body">
+  <div class="container" id="results" style="color: #111; display: none;">
+    <div id="letters" style="margin-top: 5vh;">
+      <h1 style="color: #111;">Your FOIA requests.</h1>
+      <p style="color: #111;">Foia.fyi has generated a single letter which you can open, print, and mail
+        to various government agencies. The necessary addresses are included below. You may also send this
+        letter to agencies not listed below, provided you find their correct FOIA/record dissemination sections.
+        <strong>Be sure to include a return address on the envelope, or your request may be subject to automatic
+          filtration.
+        </strong>
+      </p>
+      <hr style="color: black; border: 0px; height: 1px; background-color: black;">
+      <div class="row">
+        <div class="col-md-6" id="addresses">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 style="color: #111;">NSA</h2>
+              <p style="color: #111;">Address to:</p>
+            </div>
+            <div class="col-md-9"><p style="color: #111;" class="to">
+              NSA FOIA REQUESTER SERVICE CENTER<br>
+              NSA FOIA Requester Service Center/DJ4<br>
+              9800 Savage Road, Suite 6248<br>
+              Ft. George G. Meade, MD 20755-6248<br></p>
+            </div>
+          </div>
+          <hr style="color: black; border: 0px; height: 1px; background-color: black;">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 style="color: #111;">FBI</h2>
+              <p style="color: #111;">Address to:</p>
+            </div>
+            <div class="col-md-9"><p style="color: #111;" class="to">
+              Federal Bureau of Investigation<br>
+              Records/Information Dissemination Section<br>
+              170 Marcel Drive<br>
+              Winchester, VA 22602-4843<br></p>
+            </div>
+          </div>
+          <hr style="color: black; border: 0px; height: 1px; background-color: black;">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 style="color: #111;">CIA</h2>
+              <p style="color: #111;">Address to:</p>
+            </div>
+            <div class="col-md-9"><p style="color: #111;" class="to">
+              Information and Privacy Coordinator<br>
+              Central Intelligence Agency<br>
+              Washington, DC 20505<br></p>
+            </div>
+          </div>
+          <hr style="color: black; border: 0px; height: 1px; background-color: black;">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 style="color: #111;">IRS</h2>
+              <p style="color: #111;">Address to:</p>
+            </div>
+            <div class="col-md-9"><p style="color: #111;" class="to">
+              NSA FOIA REQUESTER SERVICE CENTER<br>
+              NSA FOIA Requester Service Center/DJ4<br>
+              9800 Savage Road, Suite 6248<br>
+              Ft. George G. Meade, MD 20755-6248<br></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-primary btn-lg btn-block" onclick="openLetter()">Open or Print Letter</button><br>
+          <div class="letter">
+            <div id="letter-content">
+              <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                  <p class="from" style="color: #111;">
+                    <span class="name">John Doe</span><br>
+                    <span class="address">120 Main Street</span><br>
+                    <span class="city">Spiegal</span>, <span class="state">New York</span> <span class="zip">20123</span>
+                  </p>
+                </div>
+              </div><br>
+              <div class="date" style="color: #111;">
+                {date}
+              </div>
+              <br>
+              <p style="color: #111;"><strong>Re: Freedom of Information Act / Privacy Act Request for Personal Records</strong></p>
+              <p style="color: #111;">To Whom It May Concern:</p>
+              <p style="color: #111;">This is a request for records and documents, both digital and physical, under the provisions of the Freedom of Information Act and the
+                Privacy Act. Please process this request under both statutes to release the maximum number of records and documents.
+                I request copies of all files, correspondence, or other records concerning myself.
+                To assist you with this search, I am providing the following information about myself:
+              </p>
+              <div class="info" style="margin-left: 5vh;">
+                <p style="color: #111;">
+                  <strong>Full name:</strong> <span class="name">John Doe</span>
+                  <br><strong>Other names and online aliases:</strong> <span class="aliases">Alioshka, citizenM, Politiwatch, milesmcc</span>
+                  <br><strong>My date of birth:</strong> <span class="dob">January 31, 2001</span>
+                  <br><strong>My place of birth:</strong> <span class="pob">New York City, NY</span>
+                  <span class="ssnfull">
+                    <br><strong>My social security number:</strong> <span class="ssn"> </span>
+                  </span>
+                  <br><strong>My phone number:</strong> <span class="phone">(917) 767-3107</span>
+                  <br><strong>My email(s):</strong> <span class="email">email@example.com</span>
+                </p>
+              </div>
+              <p style="color: #111;">
+                This is an individual request for research and study purposes, and I <span class="fees">agree that I will pay up to
+                  $30 in fees, if necessary. Please notify me in advance if fees are expected to exceed that amount.</span>
+                </p>
+                <p style="color: #111;">
+                  Please contact me at <span class="phone">___________</span> if you have any questions.
+                </p>
+                <p style="color: #111;">
+                  Under penalty of perjury, I hereby declare that I am the person named above and I understand
+                  that any falsification of this statement is punishable under the provisions of Title 18, United States Code
+                  (U.S.C.), Section 1001 by a fine of not more than $10,000 or by imprisonment of not more than five
+                  years, or both; and that requesting or obtaining any record(s) under false pretenses is punishable under
+                  the provisions of Title 5, U.S.C., Section 552a(i)(3) as a misdemeanor and by a fine of not more than
+                  $5,000.
+                </p>
+                <div class="row">
+                  <div class="col-md-9"></div>
+                  <div class="col-md-3"><p style="color: #111;">Respectfully,<br><br><br><br><span class="name">Miles McCain</span></p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="aligned">
+      <div class="aligned-item" id="former">
+        <div class="screen" id="slide-0">
+          <h2>Get your FBI, NSA, IRS, and CIA files by submitting a FOIA request.</h2><br>
+          <button class="btn btn-lg btn-block btn-success" onclick="nextSlide()">Start</button><br>
+          <hr style="color: white; border: 0px; height: 2px; background-color: white;">
+          <p>The United States Freedom of Information Act ("FOIA") is a law enacted
+            in 1966 which establishes a "right-to-know" legal process by which requests
+            may be made for government-held information to be received freely
+            or at minimal cost.
+          </p>
+          <p>
+            Foia.fyi allows you to easily navigate the often intimidating practice of
+            submitting a FOIA request on your name or company to a government agency for free.
+            For privacy and security concerns, Foia.fyi does not submit requests on behalf of other entities.
+          </p>
+        </div>
+        <div class="screen" id="slide-never" style="display: none;">
+          <h4>Which government agencies from which would you like to request information?</h4>
+          <hr style="color: white; border: 0px; height: 2px; background-color: white;">
+          <label class="bigger">
+            <input type="checkbox" checked="true" id="data-nsa">
+            National Security Agency (NSA)
+          </label><br>
+          <label class="bigger">
+            <input type="checkbox" checked="true" id="data-cia">
+            Central Intelligence Agency (CIA)
+          </label><br>
+          <label class="bigger">
+            <input type="checkbox" checked="true" id="data-fbi">
+            Federal Bureau of Investigation (FBI)
+          </label><br>
+          <label class="bigger">
+            <input type="checkbox" checked="true" id="data-irs">
+            Internal Revenue Service (IRS)
+          </label><br>
+          <p><small><i>More agencies will be added soon.</i></small></p><br><br>
+          <button class="btn btn-lg btn-block btn-primary" onclick="nextSlide()">Continue</button>
+        </div>
+        <div class="screen" id="slide-1" style="display: none;">
+          <h4>Please enter the following information about yourself.</h4>
+          <hr style="color: white; border: 0px; height: 2px; background-color: white;">
+          <p><small><i>This information is temporarily stored locally and will never leave your computer, or interact with Foia.fyi or Politiwatch servers.
+            <br><strong>We are committed to your privacy.</strong></i></small></p>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">Full Legal Name</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="John Doe" id="data-name">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">Aliases</span><br>
+                <small>Online usernames, nicknames, etc.</small>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="JohnDoe315, PrivacyLover222" id="data-aliases">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">Emails</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="john.doe@example.com, jdoe@school.edu" id="data-email">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">Phone Number</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="(929) 260-1602" id="data-phone">
+              </div>
+            </div><br><br>
+            <button class="btn btn-lg btn-block btn-primary" onclick="nextSlide()">Continue</button>
+          </div>
+          <div class="screen" id="slide-2" style="display: none;">
+            <h4>Address information</h4>
+            <hr style="color: white; border: 0px; height: 2px; background-color: white;">
+            <p>This information is required if you wish to hear back from any agency.</p>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">Address</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="120 Main Street" id="data-address">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">City</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="New York" id="data-city">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">State</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="NY" id="data-state">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">Zip</span>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="10011" id="data-zip">
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <span class="bigger">(Optional) Fee</span>
+              </div>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <div class="input-group-addon">$</div>
+                  <input type="text" class="form-control" id="data-fee" placeholder="Amount" value="30">
+                  <div class="input-group-addon">.00</div>
+                </div>
+                <small>We suggest $30. This is only paid if the records returned are in excess of 100 pages.</small>
+              </div>
+            </div><br><br>
+            <button class="btn btn-lg btn-block btn-primary" onclick="nextSlide()">Continue</button>
+          </div>
+          <div class="screen" id="slide-3" style="display: none;">
+            <h4>Additional Information</h4>
+            <hr style="color: white; border: 0px; height: 2px; background-color: white;">
+            <p><i>If you are uncomfortable including the following information, then you may omit it.</i></p>
+            <p>
+              <div class="row">
+                <div class="col-md-3">
+                  <span class="bigger">Place of Birth</span>
+                </div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="New York, NY" id="data-placeofbirth">
+                </div>
+              </div><br>
+              <div class="row">
+                <div class="col-md-3">
+                  <span class="bigger">Date of Birth</span>
+                </div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" placeholder="January 10th, 1960" id="data-dateofbirth">
+                </div>
+              </div><br>
+              <div class="row">
+                <div class="col-md-3">
+                  <span class="bigger">SSN</span><br>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="000-00-0000" id="data-ssn">
+                </div>
+                <div class="col-md-3">
+                  <input type="checkbox" checked="true" onclick="ssnbox()" id="ssn-include"> Include
+                </div>
+              </div>
+              <br><br>
+              <small><i>If you check 'include' but do not enter your SSN, an empty space will be included on the documents where you can handwrite your SSN.</i></small>
+              <br><br>
+              <button class="btn btn-lg btn-block btn-success" onclick="generateLetters()">Generate My Request!</button>
+            </div>
+            <hr style="color: white; border: 0px; height: 1px; background-color: white;">
+            <div class="sub" id="bypolitiwatch">
+              Foia.fyi is an <a href="https://github.com/PolitiwatchCode/Foia.fyi" style="color: #ccc;">open source tool</a> by <a href="https://politiwatch.org"><span class="politiwatch">Politiwatch</span></a>
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>

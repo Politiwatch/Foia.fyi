@@ -1,0 +1,59 @@
+.aligned {
+  display: -moz-flex;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+@media print {
+  #letter-content {
+      background-color: white;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 15px;
+      font-size: 14px;
+      line-height: 18px;
+  }
+}
+.aligned-item {
+  max-width: 60%;
+  margin-top: 10%;
+}
+h1, h2, h4, h4, h5, h6, .arvo {
+  font-family: 'Lora';
+  color: white;
+}
+p, .text, div{
+  color: white;
+  font-family: 'Roboto';
+}
+.body{
+  background-color: #0b3954;
+}
+.sub{
+  align-self: right;
+}
+.politiwatch{
+  font-family: 'Arvo';
+  color: white;
+}
+.big {
+  font-size: 20px;
+}
+.bigger {
+  font-size: 18px;
+}
+.letter{
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 10px;
+}
